@@ -1,0 +1,23 @@
+Route 53 (yourdomain.com)
+          │
+     AWS ALB (public)
+          │  HTTPS (TLS)
+   ┌──────┴───────────────┐
+   │                      │
+Private Subnets (multi-AZ, with NAT)
+   │
+ECS Cluster on EC2 (RHEL 9/8)  <— Docker + ECS agent
+   ├─ Service A: api-gateway (TaskDef + TargetGroup)
+   ├─ Service B: users
+   ├─ Service C: orders
+   └─ Service D: payments
+   │
+   ├─ Service discovery: AWS Cloud Map
+   ├─ Logs: CloudWatch Logs
+   ├─ Tracing: AWS X-Ray (optional)
+   └─ Metrics: CloudWatch + Container Insights
+   │
+Data Layer (private)
+   ├─ Amazon RDS (Aurora/MySQL/Postgres)
+   ├─ ElastiCache Redis (sessions/queues)
+   └─ S3 (assets/backups)

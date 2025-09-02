@@ -1,0 +1,17 @@
+infra/
+  ├─ envs/
+  │   ├─ dev/
+  │   │   ├─ backend.tf      # S3 state + DynamoDB lock
+  │   │   ├─ terraform.tfvars
+  │   │   └─ main.tf         # calls modules with dev vars
+  │   └─ prod/ ...
+  ├─ modules/
+  │   ├─ vpc/
+  │   ├─ ecr/
+  │   ├─ ecs/
+  │   ├─ alb/
+  │   ├─ rds/
+  │   ├─ redis/
+  │   ├─ iam/
+  │   └─ observability/
+  └─ providers.tf             # aws + versions
